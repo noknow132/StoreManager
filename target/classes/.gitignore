@@ -1,1 +1,6 @@
-/com/
+.settings
+.project
+target
+.classpath
+*.gitignore
+*.class
