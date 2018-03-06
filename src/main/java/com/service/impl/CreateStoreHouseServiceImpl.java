@@ -374,9 +374,7 @@ public class CreateStoreHouseServiceImpl implements ICreateStoreHouseService {
 	public Map<String, Object> editCreateStoreHouse2(CreateStoreArea createStoreArea) {
 		Map<String, Object> result=new HashMap<String, Object>();
 		try {
-//			CreateStoreHouse csh = createStoreHouseDao.selectCreateStoreHouseById(createStoreArea.getCreatestorehouseId());//当前仓库
 			CreateStoreArea csa = createStoreAreaDao.selectCreateStoreAreaById(createStoreArea.getCreatestoreareaId()); //当前区位
-//			List<StoreHouse> storeHouseList = StoreHouseDao.searchStoreHouseByCreateStoreId(csh.getCreatestorehouseId());//当前仓库所有区位
 			List<StoreHouse> storeHouseList = StoreHouseDao.searchStoreHouseByCreateStoreAreaId(createStoreArea.getCreatestoreareaId());//当前区位对应的所有仓位
 			
 			//分析编辑后要创建的仓位

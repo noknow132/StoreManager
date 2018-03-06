@@ -153,6 +153,8 @@ public class OutputStoreServiceImpl implements IOutputStoreService {
 		 ws.setInputStoreTime(new Date());	
 		 ws.setWorkType(1);
 		 ws.setWorkStatue(0);
+		// System.out.println("出库");
+
 		 ws.setInsertTime(new Date());
 		 ws.setRebotCode(rebotCode);
 		 ws.setOrderNo(orderNo);

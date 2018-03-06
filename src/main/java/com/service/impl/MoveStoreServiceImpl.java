@@ -93,6 +93,8 @@ public class MoveStoreServiceImpl implements IMoveStoreService{
 				ws.setWorkType(2);//作业类型 移库
 				ws.setOrderNo(moveStore.getMoveNo());//单号
 				ws.setWorkStatue(0);//未执行状态
+				//System.out.println("移库");
+
 				ws.setFringeCode(moveStore.getBarCode());//条形码
 				ws.setCount(fromStoreHouse.getCount());
 				

@@ -124,6 +124,8 @@ public class InputStoreServiceImpl implements IInputStoreService{
 				ws.setWorkType(0);
 				ws.setOrderNo(inputStore.getInputStoreNo());
 				ws.setWorkStatue(0);
+				//System.out.println("入库");
+
 				ws.setFringeCode(inputStore.getBarCode());
 				ws.setCount(inputStore.getCount());
 				ws.setPutPlace(storeHouse.getStoreId());

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.entity.ConfigParam;
+import com.entity.WarnRecord;
 import com.service.IConfigParamService;
 import com.util.plcconn.PLCController;
 
@@ -31,7 +32,7 @@ public class ConfigParamController {
 	//查询参数配置
 	@RequestMapping(value = "/selectConfigParamOne")
 	@ResponseBody
-	public ConfigParam selectConfigParamOne(){
+	public ConfigParam  selectConfigParamOne(){
 		return configParamService.selectConfigParamOne();
 	}
 	
@@ -118,6 +119,7 @@ public class ConfigParamController {
 	public Map<String, Object> autoRegEdit() {
 		return configParamService.autoRegEdit();
 	}
+
 	
 	
 }

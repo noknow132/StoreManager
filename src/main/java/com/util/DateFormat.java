@@ -18,7 +18,7 @@ import java.util.Random;
  * @since    JDK 1.8  
  * @see        
  */
-public class DateFormat { 
+public class DateFormat {
 	 /**
 	  * 获取现在时间
 	  * @return 返回时间类型 yyyy-MM-dd HH:mm:ss
