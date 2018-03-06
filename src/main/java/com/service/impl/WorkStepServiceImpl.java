@@ -103,6 +103,7 @@ public class WorkStepServiceImpl implements IWorkStepService {
 	//作业实体初始化
 	public WorkStep getWorkStep(StoreHouse sh,String rebotCode,String orderNo,String  toStoreId
 			){
+		//System.out.println("作业实体初始化");
 		WorkStep ws=new WorkStep();
 		String workId = UUID.randomUUID().toString().replaceAll("-", "");
 		ws.setWorkId(workId);
@@ -496,6 +497,7 @@ public class WorkStepServiceImpl implements IWorkStepService {
 	public Map<String, Object> getNowPlace() {
 		Map<String ,Object> result=new HashMap<String,Object>();
 		int isConnect = PLCConfig.CheckConnect((byte)0);
+		//System.out.println("isConnect:......."+isConnect);
 		if(isConnect<0){
 			//当连接失败的时 把数据库中作业中的作业改成等待中
 			List<WorkStep> list2 = workStepDao.searchWorkStepByStatue("1");
@@ -503,6 +505,7 @@ public class WorkStepServiceImpl implements IWorkStepService {
 				for(int i=0;i<list2.size();i++){
 					WorkStep workStep = list2.get(i);
 					workStep.setWorkStatue(0);
+					System.out.println("获取plc中的当前信息");
 					workStepDao.updateWorkStep(workStep);
 				}
 			}

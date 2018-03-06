@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import com.dao.ICreateStoreAreaDao;
@@ -30,6 +31,7 @@ public class CreateStoreAreaServiceImpl implements ICreateStoreAreaService{
 
 	//新增区位
 	@Override
+	@Transactional
 	public Map<String, Object> addCreateStoreArea(CreateStoreArea createStoreArea, String userId) {
 		Map<String, Object> result=new HashMap<String, Object>();
 		String csaId = UUID.randomUUID().toString().replaceAll("-", "");

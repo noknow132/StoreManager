@@ -136,6 +136,8 @@ public class ChangeStoreServiceImpl implements IChangeStoreService {
 		ws.setPutPlace(toStoreId);
 		ws.setWorkType(3);
 		ws.setWorkStatue(0);
+		//System.out.println("调库");
+
 		ws.setRebotCode(rebotCode);
 		ws.setOrderNo(orderNo);
 		ws.setInsertTime(new Date());

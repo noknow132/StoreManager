@@ -35,8 +35,6 @@ import com.util.plcconn.PLCConfig;
 import com.util.plcconn.PLCController;
 import com.util.plcconn.PlcMemory;
 
-
-
 @Component("doWorkThreadPLC")
 @Scope("prototype")
 public class DoWorkThreadPLC extends Thread{
@@ -99,7 +97,7 @@ public class DoWorkThreadPLC extends Thread{
 		int preMod3=-1;
 		int  count=0;//当前类型作业条数  主要是在入库时使用
 		while(true){
-			System.out.println("dowork");
+			//System.out.println("dowork");
 			ConfigParam cp = configParamDao.selectConfigParamOne();//plc启动还是关闭
 			Object[] readData = isCanRead();
 			if((byte)readData[0]==-2){
@@ -234,7 +232,7 @@ public class DoWorkThreadPLC extends Thread{
 					PLCController.InOrOurStore(data);
 					updateWorkStepStatus(ws);//更改状态为执行中
 				}else{//调库
-					if(mod[0]==0||mod[2]==3){//第一步出库
+					if(mod[0]==0||mod[1]==3){//第一步出库
 					byte[] dataC=new byte[10];
 					FinishWorkTool.copyByteArr(data,dataC);
 					dataC[0]=110;
@@ -379,6 +377,21 @@ public class DoWorkThreadPLC extends Thread{
 	}	
 	
 	public  void  updateWorkStepStatus(WorkStep ws){
+	/*	WorkStep wstemp=new WorkStep();
+		wstemp.setCount(ws.getCount());
+		wstemp.setFringeCode(ws.getFringeCode());
+		wstemp.setGetPlace(ws.getGetPlace());
+		wstemp.setInputStoreTime(new Date());
+		wstemp.setInsertTime(ws.getInsertTime());
+		wstemp.setOrderId(ws.getOrderId());
+		wstemp.setOrderNo(ws.getOrderNo());
+		wstemp.setOutputStoreTime(ws.getOutputStoreTime());
+		wstemp.setPutPlace(ws.getPutPlace());
+		wstemp.setRebotCode(ws.getRebotCode());
+		wstemp.setScanTime(ws.getScanTime());
+		wstemp.setWorkId(ws.getWorkId());
+		wstemp.setWorkStatue(1);
+		wstemp.setWorkType(ws.getWorkType());*/
 		ws.setWorkStatue(1);// 设置为执行中
 		ws.setInputStoreTime(new Date());//操作开始时间
 		workStepDao.updateWorkStep(ws);	
