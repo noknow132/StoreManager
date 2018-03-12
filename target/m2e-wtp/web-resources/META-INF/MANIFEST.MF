@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: store
 Implementation-Version: 0.1.0
-Built-By: Administrator
+Built-By: DELL
 Implementation-Vendor-Id: com.store
 Build-Jdk: 1.8.0_20
 Created-By: Maven Integration for Eclipse

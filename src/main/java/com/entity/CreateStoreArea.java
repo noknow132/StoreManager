@@ -25,6 +25,8 @@ public class CreateStoreArea {
 
     private String robotNo;
 
+    private Integer placeHeight;
+
     public String getCreatestoreareaId() {
         return createstoreareaId;
     }
@@ -111,5 +113,13 @@ public class CreateStoreArea {
 
     public void setRobotNo(String robotNo) {
         this.robotNo = robotNo == null ? null : robotNo.trim();
+    }
+
+    public Integer getPlaceHeight() {
+        return placeHeight;
+    }
+
+    public void setPlaceHeight(Integer placeHeight) {
+        this.placeHeight = placeHeight;
     }
 }

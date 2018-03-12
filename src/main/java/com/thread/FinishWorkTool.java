@@ -7,6 +7,7 @@ import com.dao.IChangeStoreDao;
 import com.dao.ICreateStoreAreaDao;
 import com.dao.IInputStoreDao;
 import com.dao.IMoveStoreDao;
+import com.dao.IOutinPlaceDao;
 import com.dao.IOutputStoreDao;
 import com.dao.IRunStepDao;
 import com.dao.IRunStepRecordDao;
@@ -16,6 +17,7 @@ import com.entity.ChangeStore;
 import com.entity.CreateStoreArea;
 import com.entity.InputStore;
 import com.entity.MoveStore;
+import com.entity.OutinPlace;
 import com.entity.OutputStore;
 import com.entity.RunStep;
 import com.entity.RunStepRecord;
@@ -119,11 +121,12 @@ public class FinishWorkTool {
 	//data[5] 放层
 	//data[6] 放列
 	//data[7] 行列层计算完成信号		
-	public static void setByteValue(byte[] data,String putPlaceId,String getPlaceId,ICreateStoreAreaDao createStoreAreaDao,IStoreHouseDao storeHouseDao){
+	public static void setByteValue(byte[] data,String putPlaceId,String getPlaceId,ICreateStoreAreaDao createStoreAreaDao,IStoreHouseDao storeHouseDao,IOutinPlaceDao outinPlaceDao){
 		StoreHouse shput=null; //放货位仓库
 		StoreHouse shget=null; //取货位仓库
 		String putPlace="";
 		String getPlace="";
+		OutinPlace outinPlace = outinPlaceDao.selectOutinPlaceByType(-1);
 		if(putPlaceId!=null&&!putPlaceId.equals("")){
 			shput = storeHouseDao.selectByStoreId(putPlaceId);
 			putPlace=shput.getStoreNo();
@@ -135,30 +138,52 @@ public class FinishWorkTool {
 		if(putPlaceId!=null&&!putPlaceId.equals("")){//放货位
 			CreateStoreArea cs = createStoreAreaDao.selectCreateStoreAreaByStoreId(putPlaceId);
 			int putcolumnsStart = cs.getColumnsStart();
+			double placeHeight = cs.getPlaceHeight();
 			int sence =cs.getSequence();
 			data[2]= (byte) ((byte)putPlace.charAt(0)+((byte)putPlace.charAt(0)%2==0?128:0));//放行
 			int ceng=(Integer.parseInt(sence==0?putPlace.substring(2,4):putPlace.substring(4,6))+(putcolumnsStart==0?1:0));
-			data[5] = (byte) ( ceng>1?ceng+1:ceng);//放层??????如果运送台与仓位一层同高  >2  不用加一  否则加一
+			data[5] = (byte) ( (placeHeight==1.5&&ceng>1)?ceng+1:ceng);//放层??????如果运送台与仓位一层同高  >2  不用加一  否则加一
 			data[6] = (byte) ( Integer.parseInt(sence==0?putPlace.substring(4,6):putPlace.substring(2,4))+(putcolumnsStart==0?1:0));//放列
 		}else{
 			//data[2]= (byte) ((byte)getPlace.charAt(0)+((byte)getPlace.charAt(0)%2==0?128:0));//暂时注释
-			data[2]= (byte) ((byte)"A".charAt(0)+((byte)"A".charAt(0)%2==0?128:0));
-			data[5] =-1;//堆垛机放层
-			data[6] =-1;//堆垛机放列
+			if(outinPlace!=null){
+				String createStoreAreaId = outinPlace.getCreatestoreareaId();
+				CreateStoreArea cs = createStoreAreaDao.selectCreateStoreAreaById(createStoreAreaId);
+				String areaName = cs.getAreaName();
+				data[2]= (byte) ((byte)areaName.charAt(0)+((byte)areaName.charAt(0)%2==0?128:0));
+				data[5] =-1;//堆垛机放层
+				data[6] =outinPlace.getPlaceColumn().byteValue();//堆垛机放列
+			}else{
+				data[2]= (byte) ((byte)"A".charAt(0)+((byte)"A".charAt(0)%2==0?128:0));
+				data[5] =-1;//堆垛机放层
+				data[6] =-1;//堆垛机放列
+			}
+
 		}
 		if(getPlaceId!=null&& !getPlaceId.equals("")){
 			CreateStoreArea cs = createStoreAreaDao.selectCreateStoreAreaByStoreId(getPlaceId);
 			int sence = cs.getColumnsStart();
 			int getcolumnsStart = cs.getColumnsStart();
+			double placeHeight = cs.getPlaceHeight();
 			data[1]= (byte) ((byte)getPlace.charAt(0)+((byte)getPlace.charAt(0)%2==0?128:0));//取行
 			int ceng=Integer.parseInt(sence==0?getPlace.substring(2,4):getPlace.substring(4,6))+(getcolumnsStart==0?1:0);
-			data[3] = (byte) ( ceng>1?ceng+1:ceng);//取层     ??????如果运送台与仓位一层同高  >2  不用加一  否则加一
+			data[3] = (byte) ( (placeHeight==1.5&&ceng>1)?ceng+1:ceng);//取层     ??????如果运送台与仓位一层同高  >2  不用加一  否则加一
 			data[4] = (byte) ( Integer.parseInt(sence==0?getPlace.substring(4,6):getPlace.substring(2,4))+(getcolumnsStart==0?1:0));//取列
 		}else{
 			//data[1]= (byte) ((byte)putPlace.charAt(0)+((byte)putPlace.charAt(0)%2==0?128:0));//暂时注释
-			data[1]= (byte) ((byte)"A".charAt(0)+((byte)"A".charAt(0)%2==0?128:0));
-			data[3] =-1;//堆垛机取层
-			data[4] =-1;//堆垛机取列
+			if(outinPlace!=null){
+				String createStoreAreaId = outinPlace.getCreatestoreareaId();
+				CreateStoreArea cs = createStoreAreaDao.selectCreateStoreAreaById(createStoreAreaId);
+				String areaName = cs.getAreaName();
+				data[1]= (byte) ((byte)areaName.charAt(0)+((byte)areaName.charAt(0)%2==0?128:0));
+				data[3] =-1;//堆垛机放层
+				data[4] =outinPlace.getPlaceColumn().byteValue();//堆垛机放列
+			}else{
+				data[1]= (byte) ((byte)"A".charAt(0)+((byte)"A".charAt(0)%2==0?128:0));
+				data[3] =-1;//堆垛机取层
+				data[4] =-1;//堆垛机取列
+			}
+			
 		}
 		data[7]=1;
 	}	

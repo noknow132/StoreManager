@@ -116,3 +116,6 @@ a{text-decoration:none!important;}
     white-space: nowrap;
     cursor: pointer;
 }
+.ban_bg{
+	background: #aaa!important;
+}

@@ -8,11 +8,9 @@
     <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
    
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <!--   <script type="text/javascript" src="../js/bootstrap.min.js"></script> -->
    <link rel="stylesheet" href="../css/bootstrapValidator.css" />
    <script type="text/javascript" charset="utf-8"
 	src="../js/bootstrapValidator.min.js"></script>
-  <!--   <script type="text/javascript" charset="utf-8" src="../js/bootstrapValidator.js"></script>  -->
 	<link rel="stylesheet" href="../fonts/iconfont.css" />
     <link rel="stylesheet" href="../css/head.css" /><!--头部样式-->
     <script type="text/javascript" src="../js/head.js"></script><!--头部js-->
@@ -486,7 +484,7 @@
 						<p class="fl success_icon">
 							<img src="../image/qname.png">
 						</p>
-						<span class="fl fc_8 fs12 lh24 span">区位名称：</span> <input
+						<span class="fl fc_8 fs12 lh24 span">区&nbsp;&nbsp;&nbsp;位&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;称：</span> <input
 							type="text" name="areaName" id="areaNameEditId"
 							class="success_cang_name_input fl place_input clearArea"
 							placeholder="请输入" /> <span style="color:red;font-size:14px;line-height: 24px;float: right;">*</span>
@@ -495,25 +493,16 @@
 						<p class="fl success_icon">
 							<img src="../image/ah.png">
 						</p>
-						<span class="fl fc_8 fs12 lh24 span">层&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数：</span>
+						<span class="fl fc_8 fs12 lh24 span">层&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数：</span>
 						<input type="text" name="rowsCount" id="rowsCountEditId"
 							class="success_cang_name_input fl place_input clearArea form-control"
 							placeholder="请输入" /> <span style="color:red;font-size:14px;line-height: 24px;float: right;">*</span>
 					</div>
-					<!-- <div class="success_cang_lei clearfix mt10 form-group">
-						<p class="fl success_icon">
-							<img src="../image/qqishi.png">
-						</p>
-						<span class="fl fc_8 fs12 lh24 span">行起始值：</span> <input
-							type="text" name="rowsStart" id="rowsStartEditId"
-							class="success_cang_name_input fl place_input clearArea form-control"
-							placeholder="请输入" />
-					</div> -->
 					<div class="success_cang_lei clearfix mt10 form-group">
 						<p class="fl success_icon">
 							<img src="../image/qlie.png">
 						</p>
-						<span class="fl fc_8 fs12 lh24 span">列&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数：</span>
+						<span class="fl fc_8 fs12 lh24 span">列&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数：</span>
 						<input type="text" name="columnsCount" id="columnsCountEditId"
 							class="success_cang_name_input fl place_input clearArea form-control"
 							placeholder="请输入" /> <span style="color:red;font-size:14px;line-height: 24px;float: right;">*</span>
@@ -522,7 +511,7 @@
 						<p class="fl success_icon">
 							<img src="../image/qlieshi.png">
 						</p>
-						<span class="fl fc_8 fs12 lh24 span">层列起始值：</span> &nbsp;&nbsp;&nbsp;&nbsp;
+						<span class="fl fc_8 fs12 lh24 span">层&nbsp;列&nbsp;起&nbsp;始&nbsp;值：</span> &nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" name="columnsStart" class="  place_input clearArea"  id="columnsStartEditId0" value="0"/> 0&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" name="columnsStart" class="  place_input clearArea"   id="columnsStartEditId1" value="1"/> 1
 						<span style="color:red;font-size:14px;line-height: 24px;float: right;">*</span>
@@ -531,23 +520,33 @@
 						<p class="fl success_icon">
 							<img src="../image/qshunxu.png">
 						</p>
-						<span class="fl fc_8 fs12 lh24 span">层列顺序：</span> <!-- <select id="sequenceEditId" 
+						<span class="fl fc_8 fs12 lh24 span">层&nbsp;&nbsp;&nbsp;列&nbsp;&nbsp;&nbsp;顺&nbsp;&nbsp;序：</span> <!-- <select id="sequenceEditId" 
 						class="success_cang_name_input fl place_input clearArea form-control"
 							name="sequence" style="width: 284px;padding:0;">
 							<option value="">请选择</option>
 							<option value="0">行/层/列</option>
 							<option value="1">行/列/层</option>
 						</select>  -->
-						<input type="radio" name="sequence" class="  place_input clearArea" style="margin-left: 20px;" id="sequenceEditId0" value="0"/> 行/层/列&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="sequence" class="  place_input clearArea" style="margin-left: 20px;" id="sequenceEditId0" value="0"/> 行/层/列&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" name="sequence" class="  place_input clearArea"   id="sequenceEditId1" value="1"/> 行/列/层
 						<span style="color:red;font-size:14px;line-height: 24px;float: right;">*</span>
 						<!-- <input type="text"  class="success_cang_name_input fl place_input" placeholder="请输入"/> -->
 					</div>
 					<div class="success_cang_lei clearfix mt10 form-group">
 						<p class="fl success_icon">
+							<img src="../image/ah.png">
+						</p>
+						<span class="fl fc_8 fs12 lh24 span">出/入货台高度：</span>
+						<input type="radio" name="placeHeight" class="place_input clearArea" style="margin-left: 20px;"  value="1"/> 与底层高度&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="placeHeight" class="place_input clearArea"    value="1.5"/> 一、二层之间&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="placeHeight" class="place_input clearArea"    value="2"/> 二层同高
+						<span style="color:red;font-size:14px;line-height: 24px;float: right;">*</span>
+					</div>
+					<div class="success_cang_lei clearfix mt10 form-group">
+						<p class="fl success_icon">
 							<img src="../image/qshunxu.png">
 						</p>
-						<span class="fl fc_8 fs12 lh24 span">机器码：</span> <input
+						<span class="fl fc_8 fs12 lh24 span">机&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;器&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span> <input
 							type="text" id="robotNoEditId" name="robotNo"
 							class="success_cang_name_input fl place_input clearArea place_input clearArea form-control"
 							placeholder="请输入" />
@@ -711,8 +710,9 @@
 					<div class="success_cang_lei clearfix mt10 form-group">
 						<span class="fl fc_8 fs12 lh24 span1">状&nbsp;&nbsp;&nbsp;&nbsp;态：</span>
 						<input type="radio" name="storeStatue" class="  place_input clearArea" id="statueEditId0" value="0"/> 空
-						<input type="radio" name="storeStatue" class="  place_input clearArea" style="margin-left: 62px;"   id="statueEditId1" value="1"/> 预占用
-						<input type="radio" name="storeStatue" class="  place_input clearArea" style="margin-left: 62px;"   id="statueEditId2" value="2"/> 已占用
+						<input type="radio" name="storeStatue" class="  place_input clearArea" style="margin-left: 42px;"   id="statueEditId1" value="1"/> 预占用
+						<input type="radio" name="storeStatue" class="  place_input clearArea" style="margin-left: 42px;"   id="statueEditId2" value="2"/> 已占用
+						<input type="radio" name="storeStatue" class="  place_input clearArea" style="margin-left: 42px;"   id="statueEditId3" value="3"/> 禁用
 						<!-- <input type="text"  class="success_cang_name_input fl place_input" placeholder="请输入"/> -->
 					</div>
 					<div class="success_cang_lei clearfix mt10 form-group">

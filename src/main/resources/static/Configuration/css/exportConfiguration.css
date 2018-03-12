@@ -80,6 +80,65 @@
 	border:0;
 	box-shadow:0 1px 3px 0px #dcdcdc;
 }
+
+
+/* bootscript table样式修改 开始*/
+.table-hover > tbody > tr:hover {
+  background-color: #e1f2fd!important;
+  border:0;
+  box-shadow:0 1px 3px 0px #dcdcdc!important;
+}
+.table>thead:first-child>tr:first-child>th{
+	border:0!important;
+	background: -ms-linear-gradient(top, #2366c2,  #5fb2fd);
+	background:-moz-linear-gradient(top,#2366c2,#5a8bc9);
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#2366c2), to(#5fb2fd));
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2366c2), to(#5fb2fd));
+	background: -webkit-linear-gradient(top, #12366c2, #5fb2fd);
+	background: -o-linear-gradient(top, #2366c2, #5fb2fd);
+	color:#fff!important;
+	 padding-left:15px!important;
+}
+.fixed-table-container thead th:first-child {
+    border-left: none;
+    border-top-left-radius: 20px!important;
+    -webkit-border-top-left-radius: 20px!important;
+    -moz-border-radius-topleft: 20px!important;
+     border-bottom-left-radius: 20px!important;
+    -webkit-border-bottom-left-radius: 20px!important;
+    -moz-border-radius-bottomleft: 20px!important;
+   
+    
+}
+.fixed-table-container thead th:last-child {
+    border-left: none;
+    border-top-right-radius: 20px!important;
+    -webkit-border-top-right-radius: 20px!important;
+    -moz-border-radius-topright: 20px!important;
+     border-bottom-right-radius: 20px!important;
+    -webkit-border-bottom-right-radius: 20px!important;
+    -moz-border-radius-bottomright: 20px!important;
+}
+.fixed-table-container thead th .th-inner{padding:2px;}
+thead{
+	box-sizing:border-box;
+	border:4px solid transparent;
+	background-clip:padding-box,border-box;
+	background-origin:padding-box,border-box;
+	background-image:linear-gradient(#fff,#fff),linear-gradient(#d4d3d3,#f9f9f9);
+	border-radius:20px;
+	/* display:-webkit-flex;
+	display:flex; */
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	margin-top: 62px;
+	
+}
+/* bootscript table样式修改 结束*/
+
+
+
 .config_message_table_content a{text-decoration: none;}
 .config_message_table_content div{
 	border-top: 0;
@@ -249,4 +308,10 @@ input:-ms-input-placeholder {
 	color: #fff;
 	border: none;
 	margin-right:0;
+}
+
+
+.fixed-table-container{
+	border:0px; 
+	border-radius:0;
 }

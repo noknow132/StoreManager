@@ -562,6 +562,7 @@ public class CreateStoreHouseServiceImpl implements ICreateStoreHouseService {
 			csa.setRowsStart(rowsStart);
 			csa.setSequence(sequence);
 			csa.setRobotNo(createStoreArea.getRobotNo());
+			csa.setPlaceHeight(createStoreArea.getPlaceHeight()==1?1:2);
 //			createStoreHouseDao.updateCreateStoreHouse(csa);
 			createStoreAreaDao.updateCreateStoreArea(csa);
 			result.put("stus", 200);

@@ -20,6 +20,13 @@ public interface IOutLetDao {
 	 * @return 出口集合
 	 */
     List< OutLet>  selectOutLetByType(@Param("type")Integer type);
+    
+    /**
+     * 根据出口编号查找出口
+     * @param outNo 出口编号
+     * @return
+     */
+    OutLet  selectOutLetByOutNo(@Param("outNo")Integer outNo);
 
 	/**
 	 * 查询所有出口

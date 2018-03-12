@@ -19,6 +19,7 @@ import com.dao.ICreateStoreHouseDao;
 import com.dao.IInputStoreDao;
 import com.dao.IMoveStoreDao;
 import com.dao.IOutLetDao;
+import com.dao.IOutinPlaceDao;
 import com.dao.IOutputStoreDao;
 import com.dao.IRunStepDao;
 import com.dao.IRunStepRecordDao;
@@ -26,7 +27,9 @@ import com.dao.IStoreHouseDao;
 import com.dao.IStoreHouseRecordDao;
 import com.dao.IWorkStepDao;
 import com.entity.ConfigParam;
+import com.entity.CreateStoreArea;
 import com.entity.OutLet;
+import com.entity.OutinPlace;
 import com.entity.RunStep;
 import com.entity.RunStepRecord;
 import com.entity.WorkStep;
@@ -69,6 +72,8 @@ public class DoWorkThreadPLC extends Thread{
 	private ICreateStoreHouseDao createStoreHouseDao;
 	@Resource
 	private ICreateStoreAreaDao createStoreAreaDao;
+	@Resource
+	private IOutinPlaceDao outinPlaceDao;
 	@Resource
 	private IOutLetDao outLetDao;
 
@@ -129,7 +134,6 @@ public class DoWorkThreadPLC extends Thread{
 			if(mod[2]!=9){
 				continue;
 			}
-			
 
 			if(mod[1]!=0){
 				count=(count>1?count-1:count);
@@ -193,14 +197,26 @@ public class DoWorkThreadPLC extends Thread{
 				System.out.println("ws.getWorkStatue()---:"+ws.getWorkStatue());
 				String putPlace = ws.getPutPlace();
 				String getPlace = ws.getGetPlace();
-				FinishWorkTool.setByteValue(data,putPlace,getPlace,createStoreAreaDao,storeHouseDao);//为byte数组赋值
+				FinishWorkTool.setByteValue(data,putPlace,getPlace,createStoreAreaDao,storeHouseDao,outinPlaceDao);//为byte数组赋值
 				if(ws.getWorkType()==1){//出库 
 					String orderNo = ws.getOrderNo();
 					OutLet outLet = outLetDao.selectOutLetByOutputStoreNo(orderNo);
 					byte[] dataC=new byte[10];
 					FinishWorkTool.copyByteArr(data,dataC);
 					dataC[0]=30;
-					dataC[5]=-2;//放货位 
+
+					OutinPlace outinPlace = outinPlaceDao.selectOutinPlaceByOutNo(outLet.getOutNo()+"");
+					if(outinPlace!=null){
+						String createStoreAreaId = outinPlace.getCreatestoreareaId();
+						CreateStoreArea cs = createStoreAreaDao.selectCreateStoreAreaById(createStoreAreaId);
+						String areaName = cs.getAreaName();
+						dataC[2]= (byte) ((byte)areaName.charAt(0)+((byte)areaName.charAt(0)%2==0?128:0));
+						dataC[5] =-1;//堆垛机放层
+						dataC[6] =outinPlace.getPlaceColumn().byteValue();//堆垛机放列
+					}else{
+						dataC[5]=-2;//放货位 
+					}
+					
 					if(PLCConfig.CheckConnect2(0)<0){
 						continue;
 					}
