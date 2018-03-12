@@ -36,7 +36,7 @@
 	<insert id="insertStoreHouses" parameterType="java.util.List">
 		insert into storehouse (store_id, createstorehouse_id,createstorearea_id,store_statue,
 		store_no,
-		good_no, count,order_id, order_detail_id, unit
+		good_no, count,order_id, order_detail_id, unit,remark
 		)
 		values
 		<foreach collection="sHouses" item="item" index="index"
@@ -45,8 +45,10 @@
 			#{item.storeId,jdbcType=VARCHAR},
 			#{item.createstorehouseId,jdbcType=VARCHAR},
 			#{item.createstoreareaId,jdbcType=VARCHAR},
-			#{item.storeStatue,jdbcType=INTEGER},#{item.storeNo,jdbcType=VARCHAR},
-			#{item.goodNo,jdbcType=VARCHAR}, #{item.count,jdbcType=INTEGER},
+			#{item.storeStatue,jdbcType=INTEGER},
+			#{item.storeNo,jdbcType=VARCHAR},
+			#{item.goodNo,jdbcType=VARCHAR}, 
+			#{item.count,jdbcType=INTEGER},
 			#{item.orderId,jdbcType=VARCHAR},
 			#{item.orderDetailId,jdbcType=VARCHAR},
 			#{item.unit,jdbcType=VARCHAR},

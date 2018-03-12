@@ -90,7 +90,7 @@ public class PLCController {
 	public static boolean resetPlace(){
 //		PlcConn();//连接plc
 		byte[] data = new byte[]{1};
-		return wirteData(0,PlcMemory.DR,DataType.BYTE8,(short)0,(short)1,data);
+		return wirteData(0,PlcMemory.DR,DataType.BYTE8,(short)6,(short)1,data);
 	}
 	
 	//出库入库移库

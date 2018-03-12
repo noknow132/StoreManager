@@ -186,6 +186,7 @@ function appendFinishWSHtml(list){
 				'<div>'+(list[i].fringe_code?list[i].fringe_code:"")+'</div>'+
 				'<div  style="text-align:center;"><img src="../image/start.png"></div>'+
 				'<div>'+(list[i].get_place?list[i].get_placeNo:"")+'</div>'+
+				'<div>'+(list[i].put_place?list[i].put_placeNo:"")+'</div>'+
 				'<div>'+
 				'<span  class="history_overflow fc_8" title="'+(list[i].input_store_time?format(list[i].input_store_time):"")+'">'+(list[i].input_store_time?format(list[i].input_store_time):"")+'</span>'+
 				'</div>'+

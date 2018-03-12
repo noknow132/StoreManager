@@ -41,6 +41,8 @@ public class DoWorkThreadPLC extends Thread{
 
 	volatile private int preWorkType=-1;//前一次的作业类型
     private int isScan=0;//前一次的作业类型
+    
+    private int chainPlc=0;  //入库开启输送链plc
 
 	private WorkStep workStep;
 	@Resource
@@ -101,7 +103,11 @@ public class DoWorkThreadPLC extends Thread{
 			ConfigParam cp = configParamDao.selectConfigParamOne();//plc启动还是关闭
 			Object[] readData = isCanRead();
 			if((byte)readData[0]==-2){
-				//System.out.println("报警break");
+				System.out.println("报警break");
+				if(preWorkType==0) {//入库
+					FinishWorkTool.chainPlc((byte)0);//输送链停止
+					chainPlc=0;
+				}
 				break;//出现报警
 			}
 			if((byte)readData[0]==-1){
@@ -123,6 +129,8 @@ public class DoWorkThreadPLC extends Thread{
 			if(mod[2]!=9){
 				continue;
 			}
+			
+
 			if(mod[1]!=0){
 				count=(count>1?count-1:count);
 			}
@@ -130,6 +138,10 @@ public class DoWorkThreadPLC extends Thread{
 			if((mod[0]==1&&mod[1]==3)||(mod[0]!=1)){
 				if((workStep!=null&&workStep.getWorkType()!=0)||(workStep!=null&&workStep.getWorkType()==0&&workStep.getScanTime()!=null)){
 					finishCurrentWorkStep(workStep);	//完成上条的作业
+				}
+				if(cp.getIsRun()==0){
+					System.out.println("手动暂停");
+					break;
 				}
 			}			
 			WorkStep ws =null;
@@ -160,8 +172,9 @@ public class DoWorkThreadPLC extends Thread{
 				if(preWorkType==-1){//刚开始启动  或一种作业类型完成了的时候
 					count=getCount(workType);
 				}
-				if(preWorkType!=0&&workType==0){//上一次不是入库作业   这次是入库作业  ????暂时没考虑报警情况
-					while(!FinishWorkTool.chainPlc((byte)50)){
+				if(chainPlc!=50&&workType==0){//上一次不是入库作业   这次是入库作业  ????暂时没考虑报警情况
+					while(!FinishWorkTool.chainPlc((byte)50)){ 
+						chainPlc=50;//可能要更改  不知道
 						continue;
 					}
 				}
@@ -222,6 +235,7 @@ public class DoWorkThreadPLC extends Thread{
 								configParamDao.updateConfigParam(cp);
 							}
 							FinishWorkTool.chainPlc((byte)0);//让输送链停止工作
+							chainPlc=0;
 							}
 					}
 				}else if(ws.getWorkType()==2){   //移库
@@ -236,8 +250,9 @@ public class DoWorkThreadPLC extends Thread{
 					byte[] dataC=new byte[10];
 					FinishWorkTool.copyByteArr(data,dataC);
 					dataC[0]=110;
-					dataC[3]=-1;//堆垛机放层
-					dataC[4]=-1;//堆垛机放列
+					dataC[2]= (byte) ((byte)"A".charAt(0)+((byte)"A".charAt(0)%2==0?128:0));
+					dataC[5]=-1;//堆垛机放层
+					dataC[6]=-1;//堆垛机放列
 					if(PLCConfig.CheckConnect2(0)<0){
 						continue;
 					}
@@ -260,8 +275,10 @@ public class DoWorkThreadPLC extends Thread{
 					}else if(mod[1]==2){//第三步 入库
 						byte[] dataR=new byte[10];
 						dataR[0]= (byte) 130;
-						dataR[1]=data[1];
+						//dataR[1]=data[1];
 						dataR[2]=data[2];
+						dataR[1]=(byte) ((byte)"A".charAt(0)+((byte)"A".charAt(0)%2==0?128:0));
+
 						dataR[3]=-1;
 						dataR[4]=-1;
 						dataR[5]=data[5];
@@ -292,15 +309,20 @@ public class DoWorkThreadPLC extends Thread{
 					e.printStackTrace();
 				}
 			}
-			if(cp.getIsRun()==0){
-				break;
-			}
+			
+
+			
+			
+
+			
+			
 			try {
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 		}
 	}
 	

@@ -137,10 +137,12 @@ public class FinishWorkTool {
 			int putcolumnsStart = cs.getColumnsStart();
 			int sence =cs.getSequence();
 			data[2]= (byte) ((byte)putPlace.charAt(0)+((byte)putPlace.charAt(0)%2==0?128:0));//放行
-			data[5] = (byte) ( Integer.parseInt(sence==0?putPlace.substring(2,4):putPlace.substring(4,6))+(putcolumnsStart==0?1:0));//放层
+			int ceng=(Integer.parseInt(sence==0?putPlace.substring(2,4):putPlace.substring(4,6))+(putcolumnsStart==0?1:0));
+			data[5] = (byte) ( ceng>1?ceng+1:ceng);//放层??????如果运送台与仓位一层同高  >2  不用加一  否则加一
 			data[6] = (byte) ( Integer.parseInt(sence==0?putPlace.substring(4,6):putPlace.substring(2,4))+(putcolumnsStart==0?1:0));//放列
 		}else{
-			data[2]= (byte) ((byte)getPlace.charAt(0)+((byte)getPlace.charAt(0)%2==0?128:0));
+			//data[2]= (byte) ((byte)getPlace.charAt(0)+((byte)getPlace.charAt(0)%2==0?128:0));//暂时注释
+			data[2]= (byte) ((byte)"A".charAt(0)+((byte)"A".charAt(0)%2==0?128:0));
 			data[5] =-1;//堆垛机放层
 			data[6] =-1;//堆垛机放列
 		}
@@ -149,10 +151,12 @@ public class FinishWorkTool {
 			int sence = cs.getColumnsStart();
 			int getcolumnsStart = cs.getColumnsStart();
 			data[1]= (byte) ((byte)getPlace.charAt(0)+((byte)getPlace.charAt(0)%2==0?128:0));//取行
-			data[3] = (byte) ( Integer.parseInt(sence==0?getPlace.substring(2,4):getPlace.substring(4,6))+(getcolumnsStart==0?1:0));//取层
+			int ceng=Integer.parseInt(sence==0?getPlace.substring(2,4):getPlace.substring(4,6))+(getcolumnsStart==0?1:0);
+			data[3] = (byte) ( ceng>1?ceng+1:ceng);//取层     ??????如果运送台与仓位一层同高  >2  不用加一  否则加一
 			data[4] = (byte) ( Integer.parseInt(sence==0?getPlace.substring(4,6):getPlace.substring(2,4))+(getcolumnsStart==0?1:0));//取列
 		}else{
-			data[1]= (byte) ((byte)putPlace.charAt(0)+((byte)putPlace.charAt(0)%2==0?128:0));
+			//data[1]= (byte) ((byte)putPlace.charAt(0)+((byte)putPlace.charAt(0)%2==0?128:0));//暂时注释
+			data[1]= (byte) ((byte)"A".charAt(0)+((byte)"A".charAt(0)%2==0?128:0));
 			data[3] =-1;//堆垛机取层
 			data[4] =-1;//堆垛机取列
 		}
