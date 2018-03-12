@@ -318,7 +318,8 @@ function searchCreateStoreHouseByStoreName(){
 				$("#robotNoEditId").val(result.robotNo);//机器码
 				$("input[name='columnsStart'][value='"+result.rowsStart+"']").prop("checked",true);//行列起始值
 				$("input[name='sequence'][value='"+result.sequence+"']").prop("checked",true);//行列顺序
-				$("#successAdd_areaId .success_button_delect").attr("createStoreId",createStoreId);//区位删除 按钮添加 建库（区位）id属性
+				$("input[name='placeHeight'][value='"+result.placeHeight+"']").prop("checked",true);//行列顺序
+//				$("#successAdd_areaId .success_button_delect").attr("createStoreId",createStoreId);//区位删除 按钮添加 建库（区位）id属性
 				
 			})
 		});

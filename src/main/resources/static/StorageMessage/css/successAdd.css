@@ -212,7 +212,7 @@
 	z-index: 100;
 }
 .success_tan_box{
-	width: 470px;
+	width: 518px;
 	background: rgba(255,255,255,1);
 	position: absolute;
 	z-index: 100;
@@ -252,7 +252,7 @@
 	padding:16px 28px 16px 28px;
 }
 .success_content_box .success_cang_name_input{
-	width: 284px;
+	width: 312px;
 	height: 26px;
 	line-height: 26px;
 	border: 2px solid #ececec;

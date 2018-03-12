@@ -1,10 +1,10 @@
 /* 搜索 */
-.export_search_div{
+.takeput_search_div{
     border:2px solid #58aefe;
     border-radius:20px;
    margin-top:10px;
 }
-.export_seach{
+.takeput_seach{
     width: 284px;
     height: 26px;
     -moz-box-shadow:0px 3px 3px #a7abae inset;
@@ -167,9 +167,22 @@ thead{
 	background: -webkit-linear-gradient(top, #fc9d71, #f26152);
 	background: -o-linear-gradient(top, #fc9d71, #f26152);
 }
+#takePut_ul_id li div>a{
+	display: inline-block;
+	width:108px;
+	color:#888;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+#takePut_ul_id li a:hover{
+	cursor: pointer;
+	color:#888;
+}
 /* 新建按钮 */
 .config_add{
-	width:128px;
+	width:161px;
 	padding:5px 0;
 	color: #519fee;
 	font-size: 14px;
@@ -188,12 +201,12 @@ thead{
 	margin-top:1px;
 }
 /* 新建弹窗框q */
-.export_icon{
+.takeput_icon{
 	width: 40px;
     height: 21px;
     position: relative;
 }
-.export_icon img{
+.takeput_icon img{
 	position: absolute;
     top: -22px;
     left: -6px;
@@ -211,7 +224,7 @@ thead{
     left: 0;
 	background: rgba(140,140,140,.5);
 }
-.export_zhe_box{
+.takeput_zhe_box{
 	width: 470px;
 	background: rgba(255,255,255,1);
 	position: absolute;
@@ -223,7 +236,7 @@ thead{
 	border-radius: 5px;
 	padding-bottom:22px;
 }
-.export_tan_name_div{
+.takeput_tan_name_div{
 	height: 48px;
 	line-height: 48px;
 	border-bottom: 1px solid #f4f4f4;
@@ -236,19 +249,19 @@ thead{
 	background: -webkit-linear-gradient(top, #3663a6, #6495d4);
 	background: -o-linear-gradient(top, #3663a6, #6495d4);
 }
-.export_tan_name_div img{
+.takeput_tan_name_div img{
 	width: 20px;
 	height: 20px;
 }
-.export_name_title_left img{
+.takeput_name_title_left img{
 	margin-top: 13px;
     width: 20px;
     height: 20px;
 }
-.export_content_box{
+.takeput_content_box{
 	padding:16px 28px 16px 28px;
 }
-.export_cang_name_input{
+.takeput_cang_name_input{
 	width: 308px;
 	height: 26px;
 	line-height: 26px;
@@ -257,6 +270,7 @@ thead{
 	border-radius: 20px;
 	margin-left: 10px;
 	background:none;
+	padding: 0 12px 0 5px;
 }
 input::-webkit-input-placeholder { 
 　　color:#ececec;
@@ -270,18 +284,18 @@ input::-moz-placeholder {
 input:-ms-input-placeholder {
 　　color:#ececec;
 }
-.span{width: 36px;}
-.export_okorno{
+.span{width: 48px;}
+.takeput_okorno{
 	height: 37px;
 	width: 100%;
 /* 	border-top:1px solid #f4f4f4; */
 	/* padding:15px 0 0 0; */
 }
-.export_button_box{
+.takeput_button_box{
 	float: right;
 	margin-right:14px;
 }
-.export_button_no,.export_button_ok{
+.takeput_button_no,.takeput_button_ok{
 	width: 100px;
 	height: 32px;
 	line-height: 32px;
@@ -298,7 +312,7 @@ input:-ms-input-placeholder {
 	cursor: pointer;
 	margin-right:20px;
 }
-.export_button_ok{
+.takeput_button_ok{
 	background: -ms-linear-gradient(top, #7fadec,  #4c82c2);
 	background:-moz-linear-gradient(top,#3663a6,#4c82c2);
 	background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#7fadec), to(#4c82c2));
@@ -309,9 +323,16 @@ input:-ms-input-placeholder {
 	border: none;
 	margin-right:0;
 }
+.takeput_about_ul{
+	width:325px;
+}
 
 
 .fixed-table-container{
 	border:0px; 
 	border-radius:0;
+}
+#takeput_form .form-control-feedback{
+	top:-3px;
+	right:6px;
 }

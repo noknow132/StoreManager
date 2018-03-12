@@ -220,7 +220,9 @@ $(function() {
 					"areaName":$("#areaNameEditId").val(),
 					"createstoreareaId":$("#createstoreareaId").val(),
 					"robotNo":$("#robotNoEditId").val(),
+					"placeHeight":$("input[name='placeHeight']:checked").val(),
 					"createstorehouseId":$(".warehouse_list_name.active_f").attr("dataNo")
+					
 				}
 			$.post("../createStoreHouse/editCreateStoreHouse2",params,function(result){
 				if(result.stus == 200){

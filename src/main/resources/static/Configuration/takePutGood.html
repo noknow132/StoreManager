@@ -1,0 +1,154 @@
+<div class="config_add mt10 clearfix fl">
+			<img class="fl" src="../image/configadd.png"/>
+			<span class="fl ml5">新建取/放货台</span>
+</div>
+<div class="fr takeput_search_div  mr28">
+      <select class="takeput_seach" id="takeputisSeachSelect" style="width:80px;">
+		<option value="">全部</option>
+		<option value="0">取货台</option>
+		<option value="1">放货台</option>
+	  </select>
+</div>
+
+
+<div class="config_message_table_top">
+			<div><span class="ml30">名称</span></div>
+			<div>类型</div>
+			<div>所在行</div>
+			<div>所在层</div>
+			<div>所在列</div>
+			<div>状态</div>
+			<div>关联出口</div>
+			<div>最近修改时间</div>
+			<div>操作</div>
+		</div>
+		<!--表格内容q-->
+		<ul id="takePut_ul_id">
+			<li class="config_message_table_content">
+				<div><span class="ml30">出口1</span></div>
+			    <div>取货台</div>
+			    <div>12</div>
+			    <div>10</div>
+			    <div>8</div>
+				<div>
+					<img class="config_table_diss ml5" src="../image/diss.png"/>
+					<img class="config_table_start none ml5" src="../image/start.png"/>
+				</div>
+				<div><a title="1出口、2出口、3出口、4出口、5出口">1出口、2出口、3出口、4出口、5出口</a></div>
+				<div>2018/1/8 12:53</div>
+				<div style="color: #078fff;" class="cursor">
+					<span style="color: #078fff;" class="fl config_disable">禁用</span>
+					<span style="color: #078fff;" class="fl config_alert ml20">修改</span>
+				</div>
+			</li>
+		</ul>
+	<!-- 新建弹窗框q -->
+	<div class="zhezhao none" id="zhezhao">
+		<div class="takeput_zhe_box">
+		 <form id="takeput_form">
+			<div class="takeput_tan_name_div">
+				<span class="fl fs14 fc_6 lh48 takeput_name_title_left"><img src="../image/configadd.png" class="fl"/></span>
+				<span class="fl fs14 fc_f lh48 ml4 takeput_tan_">新建取/放货台</span>
+				<span class="fr fs14 fc_6 lh48 takeput_close"><img src="../image/off.png"/></span>
+			</div>
+			<div class="takeput_content_box">
+				<div class="takeput_content_cang">
+					<div class="form-group takeput_cang_name clearfix mt15 form-group">
+						<p class="fl takeput_icon"><img src="../image/name.png" ></p>
+						<span class="fl fc_8 fs12 lh24 span">名称</span>
+						<input type="text" name="takeputName" class="form-control takeput_cang_name_input fl place_input" placeholder="请输入"/>
+					</div>
+					<div class="form-group takeput_cang_name clearfix">
+						<p class="fl takeput_icon"><img src="../image/leixing.png" ></p>
+						<span class="fl fc_8 fs12 lh24 span">类型</span>
+						<input type="radio" name="takeGood" id="takeGood" value="0" class="fl form-control" style="margin-left: 13px;width: 16px;height: 16px;background: none;"/>
+						<span class="fl ml5 fs14 fc_6 lh24">取货台</span>
+						<input type="radio" name="takeGood" value="1" id="putGood" class="fl ml30 form-control" style="margin-left:30px;width: 16px;height: 16px;"/>
+						<span class="fl ml5 fs14 fc_6 lh24">放货台</span>		
+					</div>
+					<div class="form-group takeput_cang_name clearfix mt15">
+						<p class="fl takeput_icon"><img src="../image/qlieshi.png"  style="width: 53px;height: 68px;"></p>
+						<span class="fl fc_8 fs12 lh24 span">所在行</span>
+						<select class="takeput_cang_name_input fl place_input form-control" name="takeputRow" id="takeputRow" placeholder="请选择所在行">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+	  					</select>
+					</div>
+					<div class="form-group takeput_cang_name clearfix mt15">
+						<p class="fl takeput_icon"><img src="../image/ah.png"  style="width: 53px;height: 68px;"></p>
+						<span class="fl fc_8 fs12 lh24 span">所在层</span>
+						<span class="fl fs14 ml15 form-control takeput_cang_name_input" name="plceHeight" style="color:#ccc;">10</span>
+					</div>
+					<div class="form-group takeput_cang_name clearfix mt15">
+						<p class="fl takeput_icon"><img src="../image/qlie.png"  style="width: 53px;height: 68px;"></p>
+						<span class="fl fc_8 fs12 lh24 span">所在列</span>
+						<input type="text" name="colum" class="form-control takeput_cang_name_input fl place_input" placeholder="请输入"/>
+					</div>
+						<div class="takeput_cang_name clearfix mt15">
+						<p class="fl takeput_icon"><img src="../image/qlieshi.png"  style="width: 53px;height: 68px;"></p>
+						<span class="fl fc_8 fs12 lh24 span">关联出口</span>
+						<ul class="takeput_about_ul clearfix fl form-group">
+							<li class="fl">
+								<input type="checkbox" name="takeGood" value="1" id="putGood" class="fl ml30 form-control" style="margin-left:16px;width: 16px;height: 16px;"/>
+								<span class="fl ml5 fs14 fc_6 lh24">1出口</span>		
+							</li>
+							<li class="fl">
+								<input type="checkbox" name="takeGood" value="1" id="putGood" class="fl ml30 form-control" style="margin-left:16px;width: 16px;height: 16px;"/>
+								<span class="fl ml5 fs14 fc_6 lh24">2出口</span>		
+							</li>
+							<li class="fl">
+								<input type="checkbox" name="takeGood" value="1" id="putGood" class="fl ml30 form-control" style="margin-left:16px;width: 16px;height: 16px;"/>
+								<span class="fl ml5 fs14 fc_6 lh24">3出口</span>		
+							</li>
+							<li class="fl">
+								<input type="checkbox" name="takeGood" value="1" id="putGood" class="fl ml30 form-control" style="margin-left:16px;width: 16px;height: 16px;"/>
+								<span class="fl ml5 fs14 fc_6 lh24">4出口</span>		
+							</li>
+							<li class="fl">
+								<input type="checkbox" name="takeGood" value="1" id="putGood" class="fl ml30 form-control" style="margin-left:16px;width: 16px;height: 16px;"/>
+								<span class="fl ml5 fs14 fc_6 lh24">5出口</span>		
+							</li>
+							<li class="fl">
+								<input type="checkbox" name="takeGood" value="1" id="putGood" class="fl ml30 form-control" style="margin-left:16px;width: 16px;height: 16px;"/>
+								<span class="fl ml5 fs14 fc_6 lh24">6出口</span>		
+							</li>
+							<li class="fl">
+								<input type="checkbox" name="takeGood" value="1" id="putGood" class="fl ml30 form-control" style="margin-left:16px;width: 16px;height: 16px;"/>
+								<span class="fl ml5 fs14 fc_6 lh24">7出口</span>		
+							</li>
+							<li class="fl">
+								<input type="checkbox" name="takeGood" value="1" id="putGood" class="fl ml30 form-control" style="margin-left:16px;width: 16px;height: 16px;"/>
+								<span class="fl ml5 fs14 fc_6 lh24">8出口</span>		
+							</li>
+							<li class="fl">
+								<input type="checkbox" name="takeGood" value="1" id="putGood" class="fl ml30 form-control" style="margin-left:16px;width: 16px;height: 16px;"/>
+								<span class="fl ml5 fs14 fc_6 lh24">9出口</span>		
+							</li>
+							<li class="fl">
+								<input type="checkbox" name="takeGood" value="1" id="putGood" class="fl ml30 form-control" style="margin-left:16px;width: 16px;height: 16px;"/>
+								<span class="fl ml5 fs14 fc_6 lh24">10出口</span>		
+							</li>
+						</ul>
+						<p class="fl mt10 fs12" style="color:red;">注意：新建取/放货台后只能禁用或修改，不能删除，请谨慎操作</p>
+					</div>
+					<input type="hidden" id="outletId"><!-- 出口id隐藏域 -->
+				</div>
+			</div>
+			<!--确认取消q-->
+			<div class="takeput_okorno">
+				<div class="takeput_button_box">
+					<div class="takeput_button_no fl">取消</div>
+					<button type="submit" class="takeput_button_ok fr">确认</button>
+				</div>	
+			</div>
+		 </form>
+		</div>		
+	</div>
+	<link rel="stylesheet" href="css/takePutGood.css" />
+	<script type="text/javascript" src="js/takePutGood.js"></script>
+	
+	
+	
+	
+		
